@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  webrtc-chat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webrtc-video-chat-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_STUN_SERVER=stun:stun.l.google.com:19302
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - webrtc-network
+
+networks:
+  webrtc-network:
+    driver: bridge
