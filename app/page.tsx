@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import { Video } from 'lucide-react';
+// Replaced external icon dependency with inline SVG to avoid missing package
 
 export default function Home() {
   const router = useRouter();
@@ -34,7 +34,10 @@ export default function Home() {
         {/* Logo/Header */}
         <div className="flex items-center justify-center gap-3 mb-12">
           <div className="bg-blue-500 p-3 rounded-lg">
-            <Video size={32} />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              <path d="M23 7l-7 5 7 5V7z" />
+            </svg>
           </div>
           <h1 className="text-4xl font-bold">VideoChat</h1>
         </div>
@@ -107,22 +110,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </div>
-  );
-}
-
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
     </div>
   );
 }
