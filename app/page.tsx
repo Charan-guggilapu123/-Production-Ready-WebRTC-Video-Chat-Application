@@ -12,6 +12,7 @@ export default function Home() {
 
   const handleCreateRoom = () => {
     const newRoomId = uuidv4();
+    console.log('Creating room', newRoomId);
     router.push(`/room/${newRoomId}`);
   };
 
@@ -52,6 +53,7 @@ export default function Home() {
           {/* Create Room */}
           <div className="mb-6">
             <button
+              type="button"
               onClick={handleCreateRoom}
               className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-colors"
             >
